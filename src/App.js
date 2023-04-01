@@ -7,7 +7,9 @@ import { useState } from 'react';
 function App() {
   const [Form, setForm] = useState(0);
   return (
-    <div>
+    <div style={{
+    // background: "#212529"
+    }}>
       <Navbar Form={Form} setForm={setForm}/>
       <Desc formvis={Form}/>
     </div>

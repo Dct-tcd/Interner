@@ -1,22 +1,35 @@
 import React from 'react'
 
 export default function Newsitem(props) {
+
+const handleDate = (str) => {
+  str=str.toString();
+  let arr = str.split(',');
+  console.log(arr);
+  return arr[0];
+}
       return (
     
-<div className='container my-3 md-4' style={{boxShadow:"4px 4px 2px lightgrey",backgroundColor:"white"}}>
-    <div className="card" style={{ width: "18rem" }}>
+<div className='container my-3 md-4'>
+    <div className="card" style={{ width: "18rem" , backgroundColor:"floralwhite" ,borderRadius:"5px" }}>
       {/* <div className="container1" style={{left:"90px"}}> */}
     {/* <span className="position-absolute top-0  badge rounded-pill bg-danger">
     {props.srcname} */}
   {/* </span> */}
   {/* </div> */}
-        <img src={props.url==null?"https://az-pe.com/wp-content/uploads/2018/05/kemptons-blank-profile-picture.jpg":props.url} className="card-img-top" alt="..." style={{Width:"60px",height:"150px"}}/>
+        <img src={props.url==null?"https://az-pe.com/wp-content/uploads/2018/05/kemptons-blank-profile-picture.jpg":props.url} className="card-img-top" alt="alt.png" style={{Width:"60px",height:"200px"}}/>
             <div className="card-body" style={{display:"flex",justifyContent:"center"}}>
               
                 <h3 className="card-title" style={{color:"purple"}}>{props.title}</h3>
                 </div>
                 <p className="card-text" style={{color:"grey"}}>&nbsp; Batch : {props.Batch}</p>
+
+{/* <div style={{color:"grey",display:"flex",justifyContent:"center"}}> */}
+      
+        <p className="card-text" style={{color:"grey"}}>&nbsp; Date : {handleDate(props.createdAt)}</p>
+        {/* </div>           */}
                 <p className="card-text" style={{color:"grey"}}>&nbsp; Stipend : {props.stipend}</p>
+                
                 <div style={{display:"flex",justifyContent:"space-between"}}>
                 <a target='_blank' href={`${props.ApplyLink}`}> Apply Here </a>
                 <a>👍🍀</a>

@@ -179,6 +179,7 @@ export default function Desc(props) {
                 ApplyLink={ele.ApplyLink}
                 Batch={ele.Batch}
                 stipend={ele.Stipend}
+                createdAt={ele.createdAt}
               />
             </div>
           );
