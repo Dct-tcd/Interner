@@ -17,7 +17,7 @@ const handleDate = (str) => {
     {props.srcname} */}
   {/* </span> */}
   {/* </div> */}
-        <img src={props.url==null?"https://az-pe.com/wp-content/uploads/2018/05/kemptons-blank-profile-picture.jpg":props.url} className="card-img-top" alt="alt.png" style={{Width:"60px",height:"200px"}}/>
+        <img src={props.url==null?"alt.png":props.url} className="card-img-top" alt="alt.png" style={{Width:"60px",height:"200px"}}/>
             <div className="card-body" style={{display:"flex",justifyContent:"center"}}>
               
                 <h3 className="card-title" style={{color:"purple"}}>{props.title}</h3>
