@@ -1,6 +1,14 @@
 import React from 'react'
 
-export default function Navbar({setForm,Form}) {
+// import Button from '@mui/material/Button';
+// or
+import { Button } from '@mui/material';
+export default function Navbar({setForm,Form,divId}) {
+
+  const handle=()=>
+  {
+    window.location="#diver";
+  }
     const formclick = () => {
         let res=prompt("Enter The Admin Code:");
         if (res=="okaba")
@@ -13,10 +21,21 @@ export default function Navbar({setForm,Form}) {
       <nav className=" navbar navbar-dark bg-primary ">
   <a className="navbar-brand" href="#"> &nbsp; Job Hunter </a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <button onClick={formclick}  className="card-btn" style={{borderRadius:"6px",padding:"4px"}}>Admin</button>
-    {/* <span className="">&nbsp;</span> */}
     
   </button>
+    <div>
+  <button onClick={handle} style={{borderRadius:"6px",padding:"4px",
+  onmouseover:"red",
+  onmouseout:"white",
+}}>About</button>
+&nbsp;&nbsp;&nbsp;
+    <button onClick={formclick}  className="card-btn" style={{borderRadius:"6px",padding:"4px"}}>Admin</button>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    </div>
+    {/* <span className="">&nbsp;</span> */}
+    
 </nav>
     </div>
   )

@@ -171,7 +171,7 @@ export default function Desc(props) {
       <div className="d-flex justifyContent-center  flex-wrap my-3">
         {posts.map((ele) => {
           return (
-            <div className="m-5">
+            <div className="m-4">
               <Newsitem
                 url={ele.url}
                 title={ele.Title}

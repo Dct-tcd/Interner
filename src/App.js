@@ -3,6 +3,7 @@ import './App.css';
 import Desc from './components/Desc';
 import Navbar from './components/Navbar';
 import { useState } from 'react';
+import About from './components/About';
 
 function App() {
   const [Form, setForm] = useState(0);
@@ -10,8 +11,9 @@ function App() {
     <div style={{
     // background: "#212529"
     }}>
-      <Navbar Form={Form} setForm={setForm}/>
+      <Navbar Form={Form} setForm={setForm} divId={"diver"}/>
       <Desc formvis={Form}/>
+      <About/>
     </div>
   );
 }
