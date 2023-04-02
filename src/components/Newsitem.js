@@ -1,5 +1,5 @@
 import React from 'react'
-
+// import alt from "./public/alt.png";
 export default function Newsitem(props) {
 
 const handleDate = (str) => {
@@ -10,14 +10,14 @@ const handleDate = (str) => {
 }
       return (
     
-<div className='container my-3 md-4'>
+<div className='container my-3 md-4 m-4'>
     <div className="card" style={{ width: "18rem" , backgroundColor:"floralwhite" ,borderRadius:"5px" }}>
       {/* <div className="container1" style={{left:"90px"}}> */}
     {/* <span className="position-absolute top-0  badge rounded-pill bg-danger">
     {props.srcname} */}
   {/* </span> */}
   {/* </div> */}
-        <img src={props.url==null?"alt.png":props.url} className="card-img-top" alt="alt.png" style={{Width:"60px",height:"200px"}}/>
+        <img src={props.url==null?"https://az-pe.com/wp-content/uploads/2018/05/kemptons-blank-profile-picture.jpg":props.url} className="card-img-top" style={{Width:"60px",height:"200px"}}/>
             <div className="card-body" style={{display:"flex",justifyContent:"center"}}>
               
                 <h3 className="card-title" style={{color:"purple"}}>{props.title}</h3>
