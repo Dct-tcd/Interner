@@ -4,12 +4,9 @@ export default function Descriptioner(props) {
   return (
     // style = {{display:props.vis!=0?'initial':'none'}}
     <div >
-    {/* <div>
-      {props.Desc}
-    </div> */}
-    {/* <h1>11</h1> */}
+  
     <br></br>
-    <h6 style={{width:"100%",height:"100%"}}>
+    <h6 style={{width:"100%",height:"100%",marginLeft:'2px',marginRight:'2px',marginBottom:'2px'}}>
      {props.desc}
     </h6>
    
