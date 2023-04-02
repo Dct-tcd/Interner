@@ -236,7 +236,7 @@ useEffect(() => {
     setAuthor(e.target.value);
   };
 
-
+let ind=0;
 
   return (
     <div>
@@ -318,6 +318,7 @@ useEffect(() => {
             onMouseLeave={() => setIsShown(false)}     
             >
               <Newsitem
+                valr={ind}
                 url={ele.url}
                 title={ele.Title}
                 desc={ele.Description}
@@ -327,6 +328,7 @@ useEffect(() => {
                 createdAt={ele.createdAt}
                 setposts={setposts}
               />
+              {ind++}
             </div>
           );
         })}
