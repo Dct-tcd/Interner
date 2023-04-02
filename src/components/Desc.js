@@ -7,6 +7,9 @@ import {
   orderBy,
   limit,
   addDoc,
+  startAfter,
+  doc,
+  startAt,
 } from "firebase/firestore";
 import Newsitem from "./Newsitem";
 import styler from "./Desc.module.css";
@@ -16,11 +19,85 @@ export default function Desc(props) {
   const PostsRef = collection(db, "Number");
   const [isShown, setIsShown] = useState(false);
 
+const [click, setclick] = useState(0);
+const [PostsToRender, setPostsToRender] = useState([]);
 
+let limiter=5;
+
+const  handleNextClick = () => {
+  // if (click==0)setclick(click+3); 
+  // else {
+  // console.log(posts);
+  let arr = [];
+  for(let i=click+limiter;i<Math.min(posts.length,click+2*limiter);i++) arr.push(posts[i]);
+  // arr.reverse();
+  setPostsToRender(arr);
+  setclick(click+limiter);  
+  // }
+}  
+
+const  handlePrevClick = () => {
+  // if (click==0)setclick(click+3); 
+  // else {
+console.log(click);
+let arr = [];
+  for(let i=click-1;i>=Math.max(0,click-2*limiter);i--) arr.push(posts[i]);
+  arr.reverse();
+  // console.log(click);
+  setPostsToRender(arr);
+  
+setclick(click-limiter);    
+  // }
+}
+const  handlefirstClick = () => {
+//   // console.log(posts);
+    // let arr = [];
+    // for(let i=click;i<Math.min(posts.length,click+limiter);i++) arr.push(posts[i]);
+    // // arr.reverse();
+    // setPostsToRender(arr);
+//     // setclick(click+3);  
+  }
+
+// if (click==0)
+// {
+//   let arr = [];
+//   for(let i=click;i<Math.min(posts.length,click+1);i++) arr.push(posts[i]);
+//   setPostsToRender(arr);
+//   setclick(click+2);
+// }  
   const getPostsList = async () => {
     try {
-      const q = query(PostsRef, orderBy("createdAt", "desc"), limit(30));
+      // const lastVisible = db!=null && db.docs!=null && console.log(db.docs[db.docs.length - 1]);
+// console.log(db);
+  // Query.
+  //  query = db
+  //   .orderBy('email')
+  //   .startAfter(lastVisible)
+  //   .limit(usersPerPage)
+  // const first = query(collection(db, "Number"), orderBy("createdAt"),limit(1));
+  // const documentSnapshots = await getDocs(first);
+  
+  // // Get the last visible document
+  // const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length-1];
+  // console.log("last", lastVisible);
+  
+  // Construct a new query starting at this document,
+  // get the next 25 cities.
+  // const q = query(collection(db, "Number"),
+  //     orderBy("createdAt"),
+  //     startAfter(lastVisible),
+  //     limit(1));
+  
+
+// const docSnap = await getDocs(doc(PostsRef, posts[0]));
+      // const query = ref.orderBy(field).limit(pageSize);
+      
+      const q = query(PostsRef, orderBy("createdAt", "desc"), limit(100));
+     
       const data = await getDocs(q);
+
+      // console.log(data);
+      
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
@@ -30,7 +107,13 @@ export default function Desc(props) {
       console.error(err);
     }
   };
-
+// const nextPage = (last) => {
+  
+//     return ref.orderBy(field)
+//           .startAfter(last[field])
+//           .limit(pageSize);
+    
+// }
   const [Title, setTitle] = useState("");
   const [Description, setDescription] = useState("");
   const [Batch, setBatch] = useState("");
@@ -70,11 +153,58 @@ export default function Desc(props) {
     }
   };
 
-  useEffect(() => {
-    getPostsList();
-  }, []);
+  // useEffect(() => {
+  //   getPostsList();
+  // }, []);
 
+// if (click==0)
+// {
+//   await  getPostsList();
+   
+// }
+// const handleFirstClick =  () => {
+//   // await{
+//      let arr = [];
+//     console.log(posts);
+//     for(let i=click;i<Math.min(posts.length,click+limiter);i++) arr.push(posts[i]);
+//     arr.reverse();
+//     setPostsToRender(arr);
+   
+//   // } 
+// }
+useEffect(() => {
+  
+  let arr = [];
   console.log(posts);
+  for(let i=click;i<Math.min(posts.length,click+limiter);i++) arr.push(posts[i]);
+  // arr.reverse();
+  setPostsToRender(arr);
+
+  
+}, [posts])
+
+  useEffect( () => {
+    getPostsList();
+    // handleFirstClick();
+    // let arr = [];
+    // console.log(posts);
+    // for(let i=click;i<Math.min(posts.length,click+limiter);i++) arr.push(posts[i]);
+    // arr.reverse();
+    // setPostsToRender(arr);
+    // setclick(click+3);  
+    // handleNextClick();
+    // setclick(click+3);
+    
+  }, []);
+  
+  // useEffect(() => {
+    // getPostsList();
+    // handleClick();
+    // setclick(click+3);
+  // }, []);
+  
+
+  // console.log(posts);
   const handletitlechange = (e) => {
     e.preventDefault();
     setTitle(e.target.value);
@@ -105,6 +235,9 @@ export default function Desc(props) {
     e.preventDefault();
     setAuthor(e.target.value);
   };
+
+
+
   return (
     <div>
      {props.formvis==1? <form
@@ -178,7 +311,7 @@ export default function Desc(props) {
       {/* element:hover {
   transform: scale(1.5); 
 } */}
-        {posts.map((ele) => {
+        {PostsToRender!=null && PostsToRender.map((ele) => {
           return (
             <div className={styler.element} style={{margin:"2%"}}
             onMouseEnter={() => setIsShown(true)}
@@ -197,7 +330,13 @@ export default function Desc(props) {
             </div>
           );
         })}
+        
       </div>
+      <div style={{display:"flex",justifyContent:"space-between",marginLeft:"5%",marginRight:"5%",marginTop:"2%" }}>
+        {/* {console.log(click)} */}
+      <button onClick={handlePrevClick} style={{borderRadius:"6px",padding:"4px"}} disabled={click<=0?true:false}>⬅️ Prev Page</button>
+      <button onClick={handleNextClick} style={{borderRadius:"6px",padding:"4px"}}  disabled={click>posts.length-limiter?true:false}> Next Page ➡️ </button>
+    </div>
     </div>
   );
 }
