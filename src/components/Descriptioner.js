@@ -9,7 +9,7 @@ export default function Descriptioner(props) {
     </div> */}
     {/* <h1>11</h1> */}
     <br></br>
-    <h6 style={{backgroundColor:"white",width:"100%",height:"100%"}}>
+    <h6 style={{backgroundColor:"floralwhite",width:"100%",height:"100%"}}>
      {props.desc}
     </h6>
    

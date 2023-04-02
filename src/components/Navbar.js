@@ -18,18 +18,16 @@ export default function Navbar({setForm,Form,divId}) {
     }
   return (
     <div > 
-      <nav className=" navbar navbar-dark bg-primary ">
+      <nav className=" navbar navbar-dark " style={{backgroundColor:"dimgray"}}>
   <a className="navbar-brand" href="/"> &nbsp; Job Hunter </a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> */}
     
-  </button>
+  {/* </button> */}
     <div>
-  <button onClick={handle} style={{borderRadius:"6px",padding:"4px",
-  onmouseover:"red",
-  onmouseout:"white",
+  <button  onClick={handle} style={{borderRadius:"6px",padding:"4px",
 }}>About</button>
 &nbsp;&nbsp;&nbsp;
-    <button onClick={formclick}  className="card-btn" style={{borderRadius:"6px",padding:"4px"}}>Admin</button>
+    <button  onClick={formclick}  className="card-btn" style={{borderRadius:"6px",padding:"4px"}}>Admin</button>
     &nbsp;
     &nbsp;
     &nbsp;

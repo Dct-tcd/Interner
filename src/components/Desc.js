@@ -9,10 +9,13 @@ import {
   addDoc,
 } from "firebase/firestore";
 import Newsitem from "./Newsitem";
+import styler from "./Desc.module.css";
 
 export default function Desc(props) {
   const [posts, setposts] = useState([]);
   const PostsRef = collection(db, "Number");
+  const [isShown, setIsShown] = useState(false);
+
 
   const getPostsList = async () => {
     try {
@@ -168,10 +171,19 @@ export default function Desc(props) {
         <button className="btn-primary" style={{padding:"4px",}}>Submit</button>
       </form>:""}
 
-      <div className="d-flex justifyContent-center  flex-wrap my-3" style={{display:"flex",justifyContent:"center"}}>
+      <div className="d-flex justifyContent-center  flex-wrap my-3" style={{display:"flex",justifyContent:"center" ,
+      // `setIsShown`  
+    }}
+       >
+      {/* element:hover {
+  transform: scale(1.5); 
+} */}
         {posts.map((ele) => {
           return (
-            <div className="m-4">
+            <div className={styler.element} style={{margin:"2%"}}
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}     
+            >
               <Newsitem
                 url={ele.url}
                 title={ele.Title}
