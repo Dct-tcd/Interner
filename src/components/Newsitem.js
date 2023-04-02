@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Descriptioner from './Descriptioner';
 // import alt from "./public/alt.png";
 export default function Newsitem(props) {
+  // useState
+const [toggle, settoggle] = useState(0);
 
 const handleDate = (str) => {
   str=str.toString();
   let arr = str.split(',');
   console.log(arr);
   return arr[0];
+}
+
+const handleDivClick = () => {
+  // prompt("1");
+
+//  props.setposts([]);
+ 
+if (toggle==0) settoggle(1);
+ else settoggle(0);
+
+// prompt("2");
 }
       return (
     
@@ -17,6 +31,7 @@ const handleDate = (str) => {
     {props.srcname} */}
   {/* </span> */}
   {/* </div> */}
+        <div onClick={handleDivClick} >
         <img src={props.url==null?"https://az-pe.com/wp-content/uploads/2018/05/kemptons-blank-profile-picture.jpg":props.url} className="card-img-top" style={{Width:"60px",height:"200px"}}/>
             <div className="card-body" style={{display:"flex",justifyContent:"center"}}>
               
@@ -34,6 +49,9 @@ const handleDate = (str) => {
                 <a target='_blank' href={`${props.ApplyLink}`}> Apply Here </a>
                 <a>👍🍀</a>
                 </div>  
+                </div>
+
+<Descriptioner desc={props.desc} title={props.Title} vis={toggle}/>
                 {/* <p className="card-text"><small className="text-muted">By {props.author==null?"Unknown":props.author} on {new Date(props.publishedAt).toLocaleDateString()}</small></p> */}
                 {/* <a href={props.url} target="_blank"  rel="noreferrer"  className="btn btn-sm  btn-dark sm"></a> */}
             </div>

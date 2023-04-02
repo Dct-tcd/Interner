@@ -180,6 +180,7 @@ export default function Desc(props) {
                 Batch={ele.Batch}
                 stipend={ele.Stipend}
                 createdAt={ele.createdAt}
+                setposts={setposts}
               />
             </div>
           );
