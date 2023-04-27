@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Descriptioner from "./Descriptioner";
+import Post from "./Post";
+import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
 // import alt from "./public/alt.png";
 export default function Newsitem(props) {
   // useState
@@ -75,7 +77,10 @@ export default function Newsitem(props) {
           </a>
           <a>👍🍀</a>
         </div>
-        <Descriptioner desc={props.desc} title={props.Title} vis={toggle} />
+        {/* <Post */}
+        <Descriptioner desc={props.desc} title={props.title} vis={toggle} />
+{/* {console.log(props.id)} */}
+        <button><Link to={"/"+`${props.id}`}>Learn More </Link> </button>
       </div>
     </div>
   );
