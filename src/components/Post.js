@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import {useLocation, useParams} from "react-router-dom";
+// useLocation
 
-function Post(props) {
+const Post = (props) => {
+  const {id} = useParams();
+  // const {state} = useLocation();
+  // useEffect(() => {
+  //   setData(props.PostsToRender);
+  // }, [props.PostsToRender]);
+
+  // console.log(props.PostsToRender);
+  // console.log(props.PostsToRender[id].Description);
+  
   return (
-    <div>
-      This is a post 
-    </div>
+    <div style={{color:"red"}}>{props.PostsToRender[id].Description}</div>
   )
 }
 

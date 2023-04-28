@@ -16,13 +16,12 @@ import styler from "./Desc.module.css";
 import { Route, Routes } from "react-router-dom";
 import Post from "./Post";
 
-export default function Desc(props) {
+export default function Desc({formvis,setPostsToRender,PostsToRender}) {
   const [posts, setposts] = useState([]);
   const PostsRef = collection(db, "Number");
   const [isShown, setIsShown] = useState(false);
 
   const [click, setclick] = useState(0);
-  const [PostsToRender, setPostsToRender] = useState([]);
 
   let limiter = 4;
 
@@ -240,10 +239,10 @@ export default function Desc(props) {
   };
 
   let ind = 0;
-
+// console.log(PostsToRender,111);
   return (
     <div>
-      {props.formvis == 1 ? (
+      {formvis == 1 ? (
         <form
           style={{
             display: "flex",

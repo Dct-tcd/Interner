@@ -79,8 +79,11 @@ export default function Newsitem(props) {
         </div>
         {/* <Post */}
         <Descriptioner desc={props.desc} title={props.title} vis={toggle} />
-{/* {console.log(props.id)} */}
-        <button><Link to={"/"+`${props.id}`}>Learn More </Link> </button>
+        <button>
+          <Link to={{ pathname: "/" + `${props.id}` , state: props.ApplyLink }}>
+        Learn More{" "}
+          </Link>{" "}
+        </button>
       </div>
     </div>
   );
