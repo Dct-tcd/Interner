@@ -19,7 +19,11 @@ export default function Navbar({setForm,Form,divId}) {
   return (
     <div > 
       <nav className=" navbar navbar-dark " style={{backgroundColor:"dimgray"}}>
-  <a className="navbar-brand" href="/"> &nbsp; Interner </a>
+       <div style={{marginLeft:"8px"}}>
+
+        <img src="https://cdn.dribbble.com/users/1758816/screenshots/4070841/intern6.png" style={{width:"25px",height:"25px"}}></img>
+  <a className="navbar-brand" href="/">  Interner </a>
+       </div>
   {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> */}
     
   {/* </button> */}

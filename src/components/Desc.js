@@ -28,32 +28,35 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
   const handleNextClick = () => {
     // if (click==0)setclick(click+3);
     // else {
-    // console.log(posts);
+      // console.log(click);
+      let val = click+1;
     let arr = [];
     for (
-      let i = click + limiter;
-      i < Math.min(posts.length, click + 2 * limiter);
+      let i = 4*val;
+      i < Math.min(posts.length, (4*val)+4);
       i++
     )
-      arr.push(posts[i]);
-    // arr.reverse();
+    arr.push(posts[i]);
+
+    setclick(click + 1);
     setPostsToRender(arr);
-    setclick(click + limiter);
-    // }
-  };
+    };
 
   const handlePrevClick = () => {
-    // if (click==0)setclick(click+3);
-    // else {
+    
+    let val = click-1;
     console.log(click);
     let arr = [];
-    for (let i = click - 1; i >= Math.max(0, click - 2 * limiter); i--)
-      arr.push(posts[i]);
-    arr.reverse();
-    // console.log(click);
-    setPostsToRender(arr);
+    for (
+      let i = (4*val);
+      i < Math.min(posts.length, 4*val+4);
+      i++
+    )
+    arr.push(posts[i]);
 
-    setclick(click - limiter);
+    setclick(click - 1 );
+    setPostsToRender(arr);
+    
     // }
   };
 
@@ -418,7 +421,7 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
         <button
           onClick={handleNextClick}
           style={{ borderRadius: "6px", padding: "4px" }}
-          disabled={click > posts.length - limiter ? true : false}
+          disabled={(4*click)+4 > posts.length  ? true : false}
         >
           {" "}
           Next Page ➡️{" "}
