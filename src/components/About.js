@@ -16,7 +16,7 @@ Our vision is to empower the youth of our nation and make them Atmanirbhar . By 
     </div>
     <div style={{display:"flex",color:"voilet" ,justifyContent:"center",marginBottom:"50px"}}> 
 
-  <a style={{ color: "inherit",
+  <a style={{ color: "inherit",marginTop:"1%",
   textDecoration: "inherit" , color:"lightblue"}}
   href="https://dsa-tracker-by-devtiwari.netlify.app/"
   target="_blank"

@@ -56,6 +56,7 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
     setclick(click - limiter);
     // }
   };
+
   const handlefirstClick = () => {
     //   // console.log(posts);
     // let arr = [];
@@ -127,6 +128,9 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
   const [Stipend, setStipend] = useState("");
   const [ApplyLink, setApplyLink] = useState("");
   const [Author, setAuthor] = useState("");
+  const [OrgDescription, setOrgDescription] = useState("");
+  const [Location, setLocation] = useState("Unknown")  
+// const [qual, setqual] = useState("")
 
   const createmessage = async (e) => {
     if (Author === "okaba") {
@@ -142,6 +146,9 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
           Stipend: Stipend,
           ApplyLink: ApplyLink,
           Title: Title,
+          OrgDescription:OrgDescription,
+          Location:Location,
+          // jobdesc:jobdesc,
           // userId: auth?.currentUser?.uid,
         });
 
@@ -152,6 +159,7 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
         setTitle("");
         seturl("");
         getPostsList();
+        setOrgDescription("");
         // getMovieList();
       } catch (err) {
         console.error(err);
@@ -238,10 +246,19 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
     setAuthor(e.target.value);
   };
 
+  const handleorgDescription = (e) => {
+    e.preventDefault();
+    setOrgDescription(e.target.value);
+  };
+
+  const handleLocation = (e) => {
+    e.preventDefault();
+    setLocation(e.target.value);
+  };
   let ind = 0;
 // console.log(PostsToRender,111);
   return (
-    <div>
+    <div >
       {formvis == 1 ? (
         <form
           style={{
@@ -300,6 +317,7 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
             type="text"
             style={{ margin: "1%" }}
           />
+
           <input
             placeholder="Author"
             name="Author"
@@ -309,6 +327,23 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
             style={{ margin: "1%" }}
           />
 
+          <input
+            placeholder="OrgDescription"
+            name="OrgDescription"
+            onChange={handleorgDescription}
+            value={OrgDescription}
+            type="text"
+            style={{ margin: "1%" }}
+          />
+          
+          <input
+            placeholder="Location"
+            name="Location"
+            onChange={handleLocation}
+            value={Location}
+            type="text"
+            style={{ margin: "1%" }}
+          />
           <button className="btn-primary" style={{ padding: "4px" }}>
             Submit
           </button>
@@ -333,6 +368,7 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
           PostsToRender.map((ele) => {
             return (
               <div
+                key={ind}
                 className={styler.element}
                 style={{ margin: "2%" }}
                 onMouseEnter={() => setIsShown(true)}
@@ -344,7 +380,7 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
                 <Newsitem
                   valr={ind}
                   id={ind}
-                  key={ind}
+                  Key={ele.ind}
                   url={ele.url}
                   title={ele.Title}
                   desc={ele.Description}
@@ -353,8 +389,10 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
                   stipend={ele.Stipend}
                   createdAt={ele.createdAt}
                   setposts={setposts}
+                  OrgDescription={OrgDescription}
+                  Location={Location}
                 />
-                {ind++}
+                <div style={{display:"none"}}>{ind++}</div>
               </div>
             );
           })}
@@ -366,6 +404,7 @@ export default function Desc({formvis,setPostsToRender,PostsToRender}) {
           marginLeft: "5%",
           marginRight: "5%",
           marginTop: "2%",
+          marginBottom:"5%",
         }}
       >
         {/* {console.log(click)} */}

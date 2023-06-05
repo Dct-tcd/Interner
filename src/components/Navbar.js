@@ -19,7 +19,7 @@ export default function Navbar({setForm,Form,divId}) {
   return (
     <div > 
       <nav className=" navbar navbar-dark " style={{backgroundColor:"dimgray"}}>
-  <a className="navbar-brand" href="/"> &nbsp; Job Hunter </a>
+  <a className="navbar-brand" href="/"> &nbsp; Interner </a>
   {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> */}
     
   {/* </button> */}

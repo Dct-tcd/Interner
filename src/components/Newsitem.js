@@ -38,15 +38,19 @@ export default function Newsitem(props) {
         }}
         onClick={handleDivClick}
       >
+         
+          
         <img
           src={
             props.url == null
-              ? "https://az-pe.com/wp-content/uploads/2018/05/kemptons-blank-profile-picture.jpg"
-              : props.url
+            ? "https://az-pe.com/wp-content/uploads/2018/05/kemptons-blank-profile-picture.jpg"
+            : props.url
           }
+          style={{ display:"flex",justifyContent:"center",height:"150px" }}
+        
           className="card-img-top"
-          style={{ Width: "60px", height: "200px" }}
-        />
+          />
+          {/* </div> */}
         <div
           className="card-body"
           style={{ display: "flex", justifyContent: "center" }}
@@ -79,9 +83,9 @@ export default function Newsitem(props) {
         </div>
         {/* <Post */}
         <Descriptioner desc={props.desc} title={props.title} vis={toggle} />
-        <button>
-          <Link to={{ pathname: "/" + `${props.id}` , state: props.ApplyLink }}>
-        Learn More{" "}
+        <button style={{borderRadius:"5px",width:"inherit"}}>
+          <Link to={{ pathname: "/" + `${props.id}` , state: props.ApplyLink }} >
+             Learn More{" "}
           </Link>{" "}
         </button>
       </div>
